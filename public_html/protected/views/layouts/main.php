@@ -19,7 +19,7 @@
     <div id="wrapper">
         <header>
             <hgroup>
-                <div id="logo"><a href="<?php echo Yii::app()->createAbsoluteUrl('/') ?>" ><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo3.png" /></a></div>
+                <div id="logo"><a href="<?php echo Yii::app()->createAbsoluteUrl('/') ?>" ><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" /></a></div>
             </hgroup>
             <nav>
                 <div  id="menu">
@@ -34,7 +34,6 @@
                             ['label'=> 'КОНТАКТЫ','url'=>['/contacts'],'linkOptions'=>['id'=>'contacts']],
                         ],
                     ));
-
                     ?>
                 </div>
             </nav>

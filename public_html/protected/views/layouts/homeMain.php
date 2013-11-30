@@ -50,18 +50,22 @@
 <div id="wrapper">
     <header>
         <hgroup>
-            <div id="home_logo"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo3.png" /></div>
+            <div id="home_logo"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" /></div>
         </hgroup>
         <nav>
             <div  id="menu">
                 <!--img src="<?php echo Yii::app()->request->baseUrl; ?>/images/menu.png" /-->
 
-            <ul>
-                <li><div class="nav-left"></div><div class="nav-center"><?php echo CHtml::link('О НАС', Yii::app()->createAbsoluteUrl('/about'), ['id'=>'about', 'class'=>'']) ?></div><div class="nav-right"></div></li>
-                <li><div class="nav-left"></div><div class="nav-center"><?php echo CHtml::link('ПОРТФОЛИО', Yii::app()->createAbsoluteUrl('/gallery'), ['id'=>'gallery']) ?></div><div class="nav-right"></div></li>
-                <li><div class="nav-left"></div><div class="nav-center"><?php echo CHtml::link('ДОСТАВКА', Yii::app()->createAbsoluteUrl('/shipping'), ['id'=>'shipping']) ?></div><div class="nav-right"></div></li>
-                <li><div class="nav-left"></div><div class="nav-center"><?php echo CHtml::link('КОНТАКТЫ', Yii::app()->createAbsoluteUrl('/contacts'), ['id'=>'contacts']) ?></div><div class="nav-right"></div></li>
-            </ul>
+                <?php
+                $this->widget('ext.widgets.top-menu.TopMenu', array(
+                    'items'=> [
+                        ['label'=> 'О НАС','url'=>['/about'],'linkOptions'=>['id'=>'about']],
+                        ['label'=> 'ПОРТФОЛИО','url'=>['/gallery'],'linkOptions'=>['id'=>'gallery']],
+                        ['label'=> 'ДОСТАВКА','url'=>['/shipping'],'linkOptions'=>['id'=>'shipping']],
+                        ['label'=> 'КОНТАКТЫ','url'=>['/contacts'],'linkOptions'=>['id'=>'contacts']],
+                    ],
+                ));
+                ?>
 
             </div>
 
