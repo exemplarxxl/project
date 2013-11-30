@@ -25,12 +25,13 @@ $this->breadcrumbs=array(
             <?php $row++ ?>
             <div class="gallery-photo">
                 <?php
-                echo '<span class="album-title">' . $album->title . '</span>';
+
 
                 echo CHtml::link(
                     CHtml::image(Photos::getLinkPhoto($album->image, 'medium')),
                     Yii::app()->createAbsoluteUrl('/gallery/album', ['id'=>$album->id]),
-                    array()); ?>
+                    array());
+                echo '<div class="album-title">' . $album->title . '</div>';?>
             </div>
             <?php if ( $row == 2 ) : ?>
                 </div>
