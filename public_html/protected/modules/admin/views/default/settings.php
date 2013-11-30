@@ -20,17 +20,17 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             'active' => true
         ),
         array(
+            'label' => 'SEO',
+            'content' => $this->renderPartial('_seo', array('form' => $form, 'settings' => $settings), true),
+        ),
+        array(
             'label' => 'Администратор',
             'content' => $this->renderPartial('_admin', array('form' => $form, 'admin' => $admin), true),
         ),
         array(
-            'label' => 'SEO',
-            'content' => $this->renderPartial('_seo', array('form' => $form, 'settings' => $settings), true),
-        ),
-        /*array(
             'label' => 'Пользователи',
             'content' => $this->renderPartial('_users', array('form' => $form, 'users' => $users), true),
-        ),*/
+        ),
     ),
 )) ?>
 
