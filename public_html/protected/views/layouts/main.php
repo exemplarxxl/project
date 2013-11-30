@@ -2,10 +2,9 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-
-        <title><?php CHtml::encode($this->metaTitle) ?></title>
-        <meta name="description" content="<?php CHtml::encode($this->metaDescription) ?>">
-        <meta name="keywords" content="<?php CHtml::encode($this->metaKeywords) ?>">
+        <title><?php echo CHtml::encode($this->metaTitle) ?></title>
+        <meta name="description" content="<?php echo CHtml::encode($this->metaDescription) ?>">
+        <meta name="keywords" content="<?php echo CHtml::encode($this->metaKeywords) ?>">
 
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet"/>
         <?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>

@@ -9,6 +9,9 @@
  * @property string $mobile
  * @property string $email
  * @property string $address
+ * @property string $default_meta_title
+ * @property string $default_meta_description
+ * @property string $default_meta_keywords
  */
 class Settings extends CActiveRecord
 {
@@ -28,7 +31,7 @@ class Settings extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('phone, mobile, email, address', 'length', 'max'=>255),
+			array('phone, mobile, email, address, default_meta_title, default_meta_description, default_meta_keywords', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, phone, mobile, email, address', 'safe', 'on'=>'search'),
@@ -57,6 +60,9 @@ class Settings extends CActiveRecord
 			'mobile' => 'Моб. телефон',
 			'email' => 'Email',
 			'address' => 'Адрес',
+            'default_meta_title' => 'Мета-заголовок',
+            'default_meta_description' => 'Описание страницы',
+            'default_meta_keywords' => 'Ключевые слова'
 		);
 	}
 
@@ -83,6 +89,9 @@ class Settings extends CActiveRecord
 		$criteria->compare('mobile',$this->mobile,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('address',$this->address,true);
+        $criteria->compare('default_meta_title',$this->default_meta_title,true);
+        $criteria->compare('default_meta_description',$this->default_meta_description,true);
+        $criteria->compare('default_meta_keywords',$this->default_meta_keywords,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -2,6 +2,7 @@
 
 class DefaultController extends Controller {
 
+
 	public function actionView($id)
 	{
 		$page = $this->loadModel($id);

@@ -24,9 +24,12 @@ class SiteController extends Controller
 
 	public function actionIndex()
 	{
+        $criteria = new CDbCriteria();
+        $criteria->select = 'default_meta_title, default_meta_description, default_meta_keywords';
 
+        $seo = Settings::model()->find($criteria);
         $this->layout ='//layouts/homeColumn1';
-		$this->render('index');
+		$this->render('index', ['seo'=>$seo]);
 	}
 
 	public function actionError()

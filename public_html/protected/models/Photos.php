@@ -376,7 +376,7 @@ class Photos extends CActiveRecord
         }
         $photo = Photos::model()->findByPk($photo_id);
         if ($photo == null) {
-            return Yii::app()->request->hostInfo. '/images/no-image.png';
+            return Yii::app()->request->hostInfo. '/images/no-image.jpg';
         }
         return Yii::app()->request->hostInfo. '/' .Yii::app()->params['photoPath'].$imageSize . '/' . $photo->image;
         //return Yii::app()->request->hostInfo. '/' .Yii::app()->params['photoPath'].$imageSize . '/' .Photos::getFolderName($photo->album_id) . '/' . $photo->image;
