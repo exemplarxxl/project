@@ -1,6 +1,6 @@
-/www/protected/config/main.php
-/www/protected/config/console.php
-/www/assets
-/www/images/gallery
-/www/protected/runtime
+/public_html/protected/config/main.php
+/public_html/protected/config/console.php
+/public_html/assets
+/public_html/images/gallery
+/public_html/protected/runtime
 /.idea
