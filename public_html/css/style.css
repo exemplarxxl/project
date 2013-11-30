@@ -27,8 +27,8 @@ h1 {
 #wrapper {
     width: 1024px;
     margin: 0 auto;
-    border-left: 1px dashed #333333;
-    border-right: 1px dashed #333333;
+    /*border-left: 1px dashed #333333;
+    border-right: 1px dashed #333333;*/
     padding: 0 20px 0 20px;
 }
 
@@ -301,6 +301,7 @@ nav ul li.active .nav-right{
     margin-top: 5px;
 }
 .album-title {
+    height: 50px;
     display: block;
     margin-bottom: 5px;
     font-size: 14pt;
