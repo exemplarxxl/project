@@ -247,12 +247,12 @@ class Albums extends CActiveRecord
             foreach ( $childAlbums as $child ) {
                 $childMenu[] = [
                     'label'=> $child->title,
-                    'url'=>Yii::app()->createAbsoluteUrl('/gallery/album/', ['id'=>$child->id]),
+                    'url'=>['/gallery/album/', 'id'=>$child->id],
                 ];
             }
             $menu[] = [
                 'label'=> $album->title,
-                'url'=>Yii::app()->createAbsoluteUrl('/gallery/album/', ['id'=>$album->id,'level'=>1]),
+                'url'=>['/gallery/album/', 'id'=>$album->id,'level'=>1],
                 'items'=> $childMenu
             ];
 

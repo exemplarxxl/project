@@ -56,20 +56,13 @@
             <div  id="menu">
                 <!--img src="<?php echo Yii::app()->request->baseUrl; ?>/images/menu.png" /-->
 
-                <ul>
-                    <li>
-                        <?php echo CHtml::link('О НАС', Yii::app()->createAbsoluteUrl('/about'), ['id'=>'about']) ?>
-                    </li>
-                    <li>
-                        <?php echo CHtml::link('ПОРТФОЛИО', Yii::app()->createAbsoluteUrl('/gallery'), ['id'=>'gallery']) ?>
-                    </li>
-                    <li>
-                        <?php echo CHtml::link('ДОСТАВКА', Yii::app()->createAbsoluteUrl('/shipping'), ['id'=>'shipping']) ?>
-                    </li>
-                    <li>
-                        <?php echo CHtml::link('КОНТАКТЫ', Yii::app()->createAbsoluteUrl('/contacts'), ['id'=>'contacts']) ?>
-                    </li>
-                </ul>
+            <ul>
+                <li><div class="nav-left"></div><div class="nav-center"><?php echo CHtml::link('О НАС', Yii::app()->createAbsoluteUrl('/about'), ['id'=>'about', 'class'=>'']) ?></div><div class="nav-right"></div></li>
+                <li><div class="nav-left"></div><div class="nav-center"><?php echo CHtml::link('ПОРТФОЛИО', Yii::app()->createAbsoluteUrl('/gallery'), ['id'=>'gallery']) ?></div><div class="nav-right"></div></li>
+                <li><div class="nav-left"></div><div class="nav-center"><?php echo CHtml::link('ДОСТАВКА', Yii::app()->createAbsoluteUrl('/shipping'), ['id'=>'shipping']) ?></div><div class="nav-right"></div></li>
+                <li><div class="nav-left"></div><div class="nav-center"><?php echo CHtml::link('КОНТАКТЫ', Yii::app()->createAbsoluteUrl('/contacts'), ['id'=>'contacts']) ?></div><div class="nav-right"></div></li>
+            </ul>
+
             </div>
 
         </nav>

@@ -24,22 +24,19 @@
             <nav>
                 <div  id="menu">
                     <!--img src="<?php echo Yii::app()->request->baseUrl; ?>/images/menu.png" /-->
-                    <ul>
-                        <li>
-                            <?php echo CHtml::link('О НАС', Yii::app()->createAbsoluteUrl('/about'), ['id'=>'about']) ?>
-                        </li>
-                        <li>
-                            <?php echo CHtml::link('ПОРТФОЛИО', Yii::app()->createAbsoluteUrl('/gallery'), ['id'=>'gallery']) ?>
-                        </li>
-                        <li>
-                            <?php echo CHtml::link('ДОСТАВКА', Yii::app()->createAbsoluteUrl('/shipping'), ['id'=>'shipping']) ?>
-                        </li>
-                        <li>
-                            <?php echo CHtml::link('КОНТАКТЫ', Yii::app()->createAbsoluteUrl('/contacts'), ['id'=>'contacts']) ?>
-                        </li>
-                    </ul>
-                </div>
 
+                    <?php
+                    $this->widget('ext.widgets.top-menu.TopMenu', array(
+                        'items'=> [
+                            ['label'=> 'О НАС','url'=>['/about'],'linkOptions'=>['id'=>'about']],
+                            ['label'=> 'ПОРТФОЛИО','url'=>['/gallery'],'linkOptions'=>['id'=>'gallery']],
+                            ['label'=> 'ДОСТАВКА','url'=>['/shipping'],'linkOptions'=>['id'=>'shipping']],
+                            ['label'=> 'КОНТАКТЫ','url'=>['/contacts'],'linkOptions'=>['id'=>'contacts']],
+                        ],
+                    ));
+
+                    ?>
+                </div>
             </nav>
         </header>
         <?php echo $content; ?>

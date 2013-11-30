@@ -51,30 +51,57 @@ header {
     margin-top: 0px;
 }
 
+
 nav {
     position: absolute;
-    bottom: 15px;
-    left: 140px;
+    bottom: 0px;
+    left: 100px;
 }
 
 nav ul li {
     display: inline-block;
-    font-size: 12pt;
-    padding: 5px 25px 5px 25px;
 }
-
-nav ul li+li {
-
+.nav-center {
+    height: 62px;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 62px;
 }
-
-nav a:hover {
+nav ul li:hover .nav-center{
+    background: url('nav-bg-center.png') repeat-x;
+}
+nav ul li:hover a {
     color: #333333;
-    border-radius: 7px;
-    background-color: #999999;
-    text-shadow: 0 0 20px #ffffff;
-    box-shadow: 0 0 20px #ffffff;
 }
-
+nav ul li.active .nav-center{
+    background: url('nav-bg-center.png') repeat-x;
+}
+nav ul li.active a {
+    color: #333333;
+}
+.nav-left {
+    width: 36px;
+    height: 62px;
+    float: left;
+}
+nav ul li:hover .nav-left{
+    background: url('nav-bg-left.png') no-repeat;
+}
+nav ul li.active .nav-left{
+    background: url('nav-bg-left.png') no-repeat;
+}
+.nav-right {
+    width: 36px;
+    height: 62px;
+    float: left;
+}
+nav ul li:hover .nav-right{
+    background: url('nav-bg-right.png') no-repeat
+}
+nav ul li.active .nav-right{
+    background: url('nav-bg-right.png') no-repeat
+}
 /* Middle
 -----------------------------------------------------------------------------*/
 .middle {
@@ -148,7 +175,9 @@ nav a:hover {
 .portfolio li ul li a:hover {
     color: #AA9A66;
 }
-
+.portfolio li ul li.active a {
+    color: #AA9A66;
+}
 
 /* Contacts
 ------------------------------------------------------------------------------*/
