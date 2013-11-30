@@ -1,0 +1,6 @@
+/www/protected/config/main.php
+/www/protected/config/console.php
+/www/assets
+/www/images/gallery
+/www/protected/runtime
+/.idea
