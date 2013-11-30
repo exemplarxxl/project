@@ -3,7 +3,9 @@
 /* @var $model ContactForm */
 /* @var $form CActiveForm */
 
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
+$this->metaTitle = 'Контакты';
+$this->metaDescription = 'Контактная информация';
+$this->metaKeywords = 'телефон, email, exemplar xxl';
 $this->breadcrumbs=array(
 	'Contact',
 );

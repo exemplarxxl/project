@@ -1,6 +1,9 @@
 <?php
 /* @var $this DefaultController */
-
+$this->pageTitle = 'Примеры наших работ';
+$this->metaTitle = 'Примеры наших работ';
+$this->metaDescription = 'Примеры работ выполнненых компанией Exemplar XXL';
+$this->metaKeywords = 'Пример объемных фигур';
 $this->breadcrumbs=array(
 	$this->module->id,
 );/*

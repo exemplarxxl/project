@@ -1,6 +1,9 @@
 <?php
 /* @var $this DefaultController */
-
+$this->pageTitle = $album->title;
+$this->metaTitle = $album->meta_title;
+$this->metaDescription = $album->meta_description;
+$this->metaKeywords = $album->meta_keywords;
 $this->breadcrumbs=array(
 	$this->module->id,
 );
