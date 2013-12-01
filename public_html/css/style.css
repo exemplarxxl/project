@@ -134,6 +134,9 @@ nav ul li.active .nav-right{
 .content ul {
     margin-left: 40px;
 }
+.content a {
+    text-decoration: underline;
+}
 
 /* Left Sidebar
 -----------------------------------------------------------------------------*/

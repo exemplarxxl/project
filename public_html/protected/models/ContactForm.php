@@ -32,7 +32,7 @@ class ContactForm extends CFormModel
     {
         return array(
             'name' => 'Ваше имя',
-            'email' => 'Телефон',
+            'email' => 'Email',
             'subject' => 'Тема сообщения',
             'body' => 'Текст сообщения',
             'verifyCode' => 'Код подтверждения',
