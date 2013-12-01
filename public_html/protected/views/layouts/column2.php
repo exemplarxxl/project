@@ -29,6 +29,8 @@
 </div><!-- .middle-->
 <?php $this->endContent(); ?>
 
+<div id="button-order">Онлайн заявка</div>
+
 <div id="modal_window">
     <span id="close"></span>
 
@@ -102,6 +104,10 @@
 
         $('#close').on('click', function(){
             close_modal('#modal_window');
+        })
+
+        $('#button-order').on('click', function(){
+            open_modal('#modal_window');
         })
     });
 </script>
