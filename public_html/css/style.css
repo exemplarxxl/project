@@ -333,3 +333,49 @@ nav ul li.active .nav-right{
     height: 23px;
     margin: 0 3px -3px 0;
 }
+/* Modal
+------------------------------------------------------------------------------------------------------*/
+
+#modal_window {
+    display: none;
+    z-index: 9999;
+    border: 3px solid #A8A8A1;
+    background-color: #333333;
+    border-radius: 10px;
+    padding: 30px;
+    position: relative;
+
+}
+#modal_window #close {
+    position: absolute;
+    background: url("close.png");
+    top: 10px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+#modal_window .row {
+    margin-bottom: 10px;
+}
+#modal_window .input-form {
+    width: 300px;
+    padding: 5px;
+
+}
+#modal_window h3 {
+    border-bottom: 1px solid #A8A8A1;
+    margin: 0 0 15px 0;
+}
+
+#modal_window .submit-button {
+    padding: 10px 20px 10px 20px;
+}
+#modal_window .buttons {
+    text-align: center;
+}
+.flash-success {
+    border: 1px solid #A8A8A1;
+    padding: 10px;
+    margin: 0 0 15px 0;
+}

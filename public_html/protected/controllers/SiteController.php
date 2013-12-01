@@ -107,4 +107,34 @@ class SiteController extends Controller
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
     }
+
+    public function actionOrder()
+    {
+        $model=new OrderForm;
+        $settings = Settings::model()->find();
+
+        if(isset($_POST['OrderForm']))
+        {
+            $model->attributes=$_POST['OrderForm'];
+            if($model->validate())
+            {
+                $name='=?UTF-8?B?'.base64_encode($model->name).'?=';
+                $subject='=?UTF-8?B?Онлайн заявка?=';
+                $headers="From: $name <{$model->email}>\r\n".
+                    "Reply-To: {$model->email}\r\n".
+                    "MIME-Version: 1.0\r\n".
+                    "Content-Type: text/plain; charset=UTF-8";
+
+                //$email = Yii::app()->params['adminEmail'];
+                $admin = User::model()->findByPk(1);
+                $email = $admin->email;
+                $message = $model->name . '\r\n' . $model->phone . '\r\n' . $model->email . '\r\n' . $model->body;
+
+                mail($email,$subject,$model->body,$headers);
+                Yii::app()->user->setFlash('success',$model->name .' благодарим Вас за обращение к нам. В ближайшее время мы свяжемся с Вами.');
+                $this->redirect(Yii::app()->request->getUrlReferrer());
+            }
+        }
+
+    }
 }
