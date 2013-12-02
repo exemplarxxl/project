@@ -132,7 +132,8 @@ nav ul li.active .nav-right{
 }
 
 .content ul {
-    margin-left: 40px;
+    margin: 0 0 15px 40px;
+
 }
 .content a {
     text-decoration: underline;

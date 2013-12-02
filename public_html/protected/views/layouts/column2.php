@@ -87,11 +87,11 @@
     function open_modal(box) {
         $("#background").show()
         $(box).centered_modal();
-        $(box).delay(100).show(1);
+        $(box).delay(100).fadeIn(200);
     }
     function close_modal(box) {
         $(box).hide();
-        $("#background").delay(100).hide(1);
+        //$("#background").delay(100).hide(1);
     }
 
     $(document).ready(function() {

@@ -31,12 +31,28 @@ $('#translit-btn').click(function() {
 <div class="control-group">
 	<?= $form->labelEx($model, 'content', array('class' => 'control-label')) ?>
 	<div class="controls">
-		<? $this->widget('ext.imperavi-redactor.ImperaviRedactorWidget', array(
+        <?php echo $this->widget('application.extensions.ckeditor.CKEditor', array(
+        'model' => $model,
+        'attribute' => 'content',
+        'language' => '' . Yii::app()->language . '',
+        'editorTemplate' => 'advanced', /* full, basic */
+        'skin' => 'kama',
+        'toolbar' => array(
+        array('Source', '-', 'Bold', 'Italic', 'Underline', 'Strike'),
+        array('Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'),
+        array('NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'),
+        array('Styles', 'Format', 'Font', 'FontSize', 'TextColor', 'BGColor'),
+        array('Image', 'Link', 'Unlink', 'SpecialChar'),
+        ),
+        //'options' => $options,
+        //'htmlOptions' => array('id' => $fieldId)
+        ), true); ?>
+		<? /*$this->widget('ext.imperavi-redactor.ImperaviRedactorWidget', array(
 			'model' => $model,
 			'attribute' => 'content',
 			'options' => array(
 				'lang' => 'ru',
 			),
-		)) ?>
+		)) */?>
 	</div>
 </div>
