@@ -64,7 +64,7 @@ $('#translit-btn').click(function() {
             'toolbar' => array(
                 array('Source', '-', 'Bold', 'Italic', 'Underline', 'Strike'),
                 array('Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'),
-                array('NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'),
+                array('NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv'-'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'),
                 array('Styles', 'Format', 'Font', 'FontSize', 'TextColor', 'BGColor'),
                 array('Image', 'Link', 'Unlink', 'SpecialChar'),
             ),
