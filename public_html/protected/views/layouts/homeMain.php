@@ -74,8 +74,8 @@
     <section>
         <div id="sidebar"></div>
     </section>
-    <footer>
-        <!--div class="footer_navigation">
+    <!--footer>
+        <div class="footer_navigation">
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About HTML5</a></li>
@@ -87,8 +87,8 @@
         </hgroup>
         <address>
             <a href="mailto:mikuta.pavel@gmail.com">Email Me</a>
-        </address-->
-    </footer>
+        </address>
+    </footer-->
 </div>
 <script>
 
