@@ -9,9 +9,20 @@ class PhotosController extends AdminController
 
         $photos->setAttributes(array('parent_id'=>0));
 
-        if (isset($_GET['Photos']))
+        if (isset($_GET['Photos'])) {
             $photos->attributes = $_GET['Photos'];
-        //var_dump($model);die;
+
+            Yii::app()->user->setState('PhotosSearchParams', $_GET['Photos']);
+            //Yii::app()->user->setState('HouseOverhaul_page', $_GET['HouseOverhaul_page']);
+        } else {
+            $searchParams = Yii::app()->user->getState('PhotosSearchParams');
+            //$paramsPage = Yii::app()->user->getState('HouseOverhaul_page');
+
+            if (isset($searchParams)) {
+                $photos->attributes = $searchParams;
+            }
+        }
+
         $this->render('index', array(
             'photos' => $photos,
         ));
