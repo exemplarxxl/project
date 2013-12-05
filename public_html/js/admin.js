@@ -12,7 +12,7 @@ success: function(){
 
 function show_loader(box) {
 
-    $('<div class="' + box + '"');
+    $('<div class="' + box + '"></div>');
     $(box).centered_loader();
     $(box).show();
     }
