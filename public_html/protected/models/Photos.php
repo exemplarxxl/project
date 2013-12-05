@@ -103,7 +103,7 @@ class Photos extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('album_id',$this->album_id, true);
+		$criteria->compare('album_id',$this->album_id);
 		$criteria->compare('is_published',$this->is_published);
 		$criteria->compare('sort',$this->sort, true);
 		$criteria->compare('image',$this->image);
@@ -125,7 +125,7 @@ class Photos extends CActiveRecord
         $criteria=new CDbCriteria;
 
         $criteria->compare('id',$this->id);
-        $criteria->compare('album_id',$this->album_id, true);
+        $criteria->compare('album_id',$this->album_id);
         $criteria->compare('is_published',$this->is_published);
         $criteria->compare('sort',$this->sort, true);
         $criteria->compare('image',$this->image);
