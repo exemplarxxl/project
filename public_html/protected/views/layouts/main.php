@@ -2,6 +2,7 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
+        <base href="<?php echo Yii::app()->getRequest()->getHostInfo() ?>" />
         <title><?php echo CHtml::encode($this->metaTitle) ?></title>
         <meta name="description" content="<?php echo CHtml::encode($this->metaDescription) ?>">
         <meta name="keywords" content="<?php echo CHtml::encode($this->metaKeywords) ?>">
@@ -46,7 +47,7 @@
 
         <footer>
             <div class="footer-logo">
-                <img src="../images/footer_logo.png" alt="<?php echo Yii::app()->name ?>" >
+                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/footer_logo.png" alt="<?php echo Yii::app()->name ?>" >
             </div>
 
             <div class="footer-center">

@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php $this->widget('bootstrap.widgets.TbNavbar', array(
-    'brand' => 'Админпанель',
+    //'brand' => 'Админпанель',
     'items' => array(
         array(
             'class' => 'bootstrap.widgets.TbMenu',
@@ -32,6 +32,7 @@
                 <h3><?= $this->pageTitle ?></h3>
             </div-->
             <?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+                'homeLink'=>CHtml::link('Админпанель', Yii::app()->createAbsoluteUrl('/admin/')),
                 'links' => $this->breadcrumbs,
             )) ?>
             <?php $this->widget('bootstrap.widgets.TbAlert', array(
