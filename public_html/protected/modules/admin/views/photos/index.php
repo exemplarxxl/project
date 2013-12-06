@@ -13,6 +13,16 @@ $('.table').treeTable({
 ");
 ?>
 
+<?php echo CHtml::dropDownList('albums','',
+    Albums::model()->selectList(),
+    ['empty'=>'Загрузить фотографии',
+        'onchange' => '
+            if ( $(this).val() != "" ) {
+                location.href = "' . Yii::app()->createAbsoluteUrl('/admin/photos/addPhotos/album_id') . '/" + $(this).val();
+            }
+        '
+    ]) ?>
+
 <? $this->widget('TbGridViewTree', array(
     'id' => 'photos-grid',
     'dataProvider' => $photos->search(),

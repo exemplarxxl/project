@@ -8,10 +8,31 @@ $this->breadcrumbs = array(
 ?>
 
 <?php echo Photos::getLinkPhotoByName($photo->image, $photo->album_id) ?>
-
 <div class="btn-toolbar">
-    <?php echo CHtml::link('Добавить фотографии', Yii::app()->createAbsoluteUrl('/admin/photos/addGroupPhotos', array("photo_id"=>$photo->id,'album_id'=>$photo->album_id)), array('class' => 'btn')) ?>
+    <?php
+    $this->widget(
+        'ext.widgets.uploadify_html5.EUploadifyHtml5Widget',
+        array(
+            // Название 'Filedata' не работает. В JavaScript скрипте строго прописано имя поля "Filedata"
+            'name' => 'Filedata',
+            'sessionParam' => 'PHP_SESSION_ID',
+            'options' => array(
+                'fileExt' => '*.jpg;*.png;*.gif',
+                'uploadScript' => $this->createAbsoluteUrl('/admin/photos/ajaxGroupPhotosUpload'),
+                'formData' => "js:{'album_id': '" . $photo->album_id . "', 'photo_id': '" . $photo->id ."'}",
+                'auto' => true,
+                'multi' => true,
+                'removeCompleted' => true,
+                'buttonClass' => 'btn btn-success',
+                'buttonText' => 'Добавить фотографии',
+                'height' => 24,
+                'width' => 150,
+                'onUploadComplete' => "js:function(file, data) { location.href= '" . Yii::app()->createAbsoluteUrl('/admin/photos/groupPhoto', ['photo_id'=>$photo->id]) ."' }",
+            ),
+        )
+    ); ?>
 </div>
+
 
 <? $this->widget('TbGridViewTree', array(
     'id' => 'photos-grid',
