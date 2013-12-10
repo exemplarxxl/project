@@ -41,6 +41,7 @@
                 'closeText' => '&times;',
             )) ?>
         </div>
+
         <?php echo $content ?>
     </div>
     <?php

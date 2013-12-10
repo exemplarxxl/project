@@ -33,7 +33,7 @@
                     $this->widget('ext.widgets.top-menu.TopMenu', array(
                         'items'=> [
                             ['label'=> 'О НАС','url'=>['/about'],'linkOptions'=>['id'=>'about']],
-                            ['label'=> 'ПОРТФОЛИО','url'=>['/gallery'],'linkOptions'=>['id'=>'gallery']],
+                            ['label'=> 'ПОРТФОЛИО','url'=>['gallery/album/6'],'linkOptions'=>['id'=>'gallery']],
                             ['label'=> 'ДОСТАВКА','url'=>['/shipping'],'linkOptions'=>['id'=>'shipping']],
                             ['label'=> 'КОНТАКТЫ','url'=>['/contacts'],'linkOptions'=>['id'=>'contacts']],
                         ],
@@ -55,10 +55,10 @@
                     <?php
                     $this->widget('zii.widgets.CMenu', array(
                         'items'=> [
-                            ['label'=> 'О НАС','url'=>['/about'],'linkOptions'=>['id'=>'about']],
-                            ['label'=> 'ПОРТФОЛИО','url'=>['/gallery'],'linkOptions'=>['id'=>'gallery']],
-                            ['label'=> 'ДОСТАВКА','url'=>['/shipping'],'linkOptions'=>['id'=>'shipping']],
-                            ['label'=> 'КОНТАКТЫ','url'=>['/contacts'],'linkOptions'=>['id'=>'contacts']],
+                            ['label'=> 'О НАС','url'=>['/about'],'linkOptions'=>[]],
+                            ['label'=> 'ПОРТФОЛИО','url'=>['gallery/album/6'],'linkOptions'=>[]],
+                            ['label'=> 'ДОСТАВКА','url'=>['/shipping'],'linkOptions'=>[]],
+                            ['label'=> 'КОНТАКТЫ','url'=>['/contacts'],'linkOptions'=>[]],
                         ],
                     ));
                     ?>
