@@ -15,6 +15,7 @@ $this->widget(
         'sessionParam' => 'PHP_SESSION_ID',
         'options' => array(
             'fileExt' => '*.jpg;*.png;*.gif',
+            //'fileSizeLimit' => 10000,
             'uploadScript' => $this->createAbsoluteUrl('/admin/photos/ajaxPhotosUpload'),
             'formData' => "js:{'album_id': '" . $album->id ."'}",
             'auto' => true,

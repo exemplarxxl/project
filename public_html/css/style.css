@@ -53,6 +53,9 @@ h2 {
     height: 100px;
     background: url('../images/ajax-loader.gif');
 }
+.indent {
+    height: 30px;
+}
 /* Header
 -----------------------------------------------------------------------------*/
 header {

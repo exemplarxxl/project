@@ -20,7 +20,9 @@ $this->menu=array(
 <div class="page-header">
     <h1><img src="<?php echo Yii::app()->request->hostInfo ?>/css/gallery-gray.png" class="gallery-gray">Примеры наших работ</h1>
 </div>
+<?php $i=0; ?>
 <?php foreach ( $albums as $album ) :?>
+    <?php echo ( $i > 0 ) ? '<div class="indent"></div>':''; $i++ ?>
     <h2><?php echo $album->title; ?></h2>
     <div class="gallery">
         <?php $row = 0; ?>
