@@ -110,7 +110,7 @@ $('.table').treeTable({
                 'update' => array(
                     'label' => 'Редактировать',
                     'options' => array('live' => false,'data-toggle'=>'modal','data-target'=>'#myModal',),
-                    'url' => 'Yii::app()->createAbsoluteUrl("/admin/photos/ajaxUpdatePhotoTitle", array("photo_id"=>$data->id))',
+                    'url' => 'Yii::app()->createAbsoluteUrl("/admin/photos/ajaxUpdateGroupPhotoTitle", array("photo_id"=>$data->id))',
                     'click' => 'function(){
                                 var link = $(this).attr("href");
                                 $(this).attr("href", "#");

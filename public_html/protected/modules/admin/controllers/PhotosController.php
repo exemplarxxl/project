@@ -2,6 +2,8 @@
 
 class PhotosController extends AdminController
 {
+    public $group = false;
+
     public function actionIndex()
     {
         $photos = new Photos('search');
@@ -49,6 +51,7 @@ class PhotosController extends AdminController
             $photo->album_id = $album_id;
             $photo->parent_id = 0;
             $photo->group_id = 0;
+            $photo->is_group = 0;
             $photo->sort_group = 1;
             $photo->image = CUploadedFile::getInstanceByName("Filedata");
 
@@ -109,6 +112,7 @@ class PhotosController extends AdminController
             $photo->album_id = $album_id;
             $photo->parent_id = $photo_id;
             $photo->group_id = $photo_id;
+            $photo->is_group = 1;
             $photo->image = CUploadedFile::getInstanceByName("Filedata");
 
             if ($photo->save(array('image'))) {
@@ -134,6 +138,79 @@ class PhotosController extends AdminController
         if ( isset($_POST['Photos']) ) {
             $photo->attributes = $_POST['Photos'];
             if ( $photo->save() ) {
+                if( isset($_POST['Photos']['sort'])){
+
+                    $sql = "SELECT id FROM ".Photos::model()->tableName()." WHERE album_id = " . $photo->album_id ." AND sort >= " . $_POST['Photos']['sort'] . " ORDER BY sort ASC";
+                    $ids = Yii::app()->db->createCommand($sql)->queryColumn();
+                    $i = $_POST['Photos']['sort'];
+                    foreach($ids as $id){
+                        if ( $id == $photo->id ) {
+                            continue;
+                        }
+                        $i++;
+                        $sql = "UPDATE ".Photos::model()->tableName()." SET sort=$i WHERE id=$id";
+                        Yii::app()->db->createCommand($sql)->execute();
+                    }
+                    $sql = "SELECT id FROM ".Photos::model()->tableName()." WHERE album_id = " . $photo->album_id ." ORDER BY sort ASC";
+                    $ids = Yii::app()->db->createCommand($sql)->queryColumn();
+                    $i = 0;
+                    foreach($ids as $id){
+                        $i++;
+                        $sql = "UPDATE ".Photos::model()->tableName()." SET sort=$i WHERE id=$id";
+                        Yii::app()->db->createCommand($sql)->execute();
+                    }
+                }
+                Yii::app()->user->setFlash('success', "Успешно сохранено.");
+                if ( $photo->group_id > 0 ) {
+                    $this->redirect(array('/admin/photos/'));
+                }
+                $this->redirect(array('/admin/photos/'));
+            }
+        }
+
+        $this->renderPartial('_updatePhotoTitle',array(
+            'photo'=>$photo,
+        ),false,true);
+    }
+
+    public function actionAjaxUpdateGroupPhotoTitle($photo_id) {
+        $photo = Photos::model()->findByPk($photo_id);
+
+        Yii::app()->clientScript->scriptMap['jquery.js'] = false;
+        Yii::app()->clientScript->scriptMap['jquery-ui.min.js'] = false;
+        Yii::app()->clientScript->scriptMap['jquery-ui.css'] = false;
+        Yii::app()->clientScript->scriptMap['bootstrap.js'] = false;
+        Yii::app()->clientScript->scriptMap['bootstrap-yii.css'] = false;
+
+        $this->group = true;
+
+        if ( isset($_POST['Photos']) ) {
+            $photo->attributes = $_POST['Photos'];
+            if ( $photo->save() ) {
+                if (  isset($_POST['Photos']['sort_group'])) {
+
+                    $sql = "SELECT id FROM ".Photos::model()->tableName()." WHERE album_id = " . $photo->album_id ." AND group_id = " . $photo->group_id ." AND sort_group >= " . $_POST['Photos']['sort_group'] . " ORDER BY sort_group ASC";
+                    $ids = Yii::app()->db->createCommand($sql)->queryColumn();
+                    $i = $_POST['Photos']['sort_group'];
+                    foreach($ids as $id){
+                        if ( $id == $photo->id ) {
+                            continue;
+                        }
+                        $i++;
+                        $sql = "UPDATE ".Photos::model()->tableName()." SET sort_group=$i WHERE id=$id";
+                        Yii::app()->db->createCommand($sql)->execute();
+                    }
+
+                    $sql = "SELECT id FROM ".Photos::model()->tableName()." WHERE album_id = " . $photo->album_id ." AND group_id = " . $photo->group_id ." ORDER BY sort_group ASC";
+                    $ids = Yii::app()->db->createCommand($sql)->queryColumn();
+                    $i = 0;
+                    foreach($ids as $id){
+
+                        $i++;
+                        $sql = "UPDATE ".Photos::model()->tableName()." SET sort_group=$i WHERE id=$id";
+                        Yii::app()->db->createCommand($sql)->execute();
+                    }
+                }
                 Yii::app()->user->setFlash('success', "Успешно сохранено.");
                 if ( $photo->group_id > 0 ) {
                     $this->redirect(array('/admin/photos/groupPhoto', 'photo_id'=>$photo->group_id));
@@ -151,6 +228,8 @@ class PhotosController extends AdminController
         $photo = Photos::model()->findByPk($photo_id);
         $groupPhotos = new Photos('searchGroup');
         $groupPhotos->setAttributes(['group_id'=>$photo_id]);
+
+        $this->group = true;
 
         if (isset($_GET['Photos']))
             $groupPhotos->attributes = $_GET['Photos'];

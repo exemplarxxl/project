@@ -13,6 +13,7 @@
  * @property integer $parent_id
  * @property integer $group_id
  * @property integer $sort_group
+ * @property integer $is_group
  */
 class Photos extends CActiveRecord
 {
@@ -45,7 +46,7 @@ class Photos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('album_id, is_published, sort, parent_id, group_id, sort_group', 'numerical', 'integerOnly'=>true),
+			array('album_id, is_published, sort, parent_id, group_id, sort_group, is_group', 'numerical', 'integerOnly'=>true),
 			array('image, title', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -80,7 +81,8 @@ class Photos extends CActiveRecord
 			'title' => 'Название',
 			'parent_id' => 'Родитель',
             'group_id' => 'Доп.фото',
-            'sort_group' => '№ п/п'
+            'sort_group' => '№ п/п',
+            'is_group' => 'is_group'
 		);
 	}
 
@@ -111,6 +113,7 @@ class Photos extends CActiveRecord
 		$criteria->compare('parent_id',$this->parent_id);
         $criteria->compare('group_id',$this->group_id);
         $criteria->compare('sort_group',$this->sort_group);
+        $criteria->compare('is_group',$this->is_group);
         $criteria->order = 'sort ASC';
 
 		return new CActiveDataProvider($this, array(
@@ -259,6 +262,29 @@ class Photos extends CActiveRecord
             ->queryScalar();
         $count = ($count != 0) ? $count .' фото' : 'добавить фото';
         return $count;
+    }
+
+    public function afterDelete(){
+        if($this->is_group == 0){
+            $sql = "SELECT id FROM ".$this->tableName()." WHERE album_id = " . $this->album_id ." AND is_group = 0  ORDER BY sort ASC";
+            $ids = Yii::app()->db->createCommand($sql)->queryColumn();
+            $i = 0;
+            foreach($ids as $id){
+                $i++;
+                $sql = "UPDATE ".$this->tableName()." SET sort=$i WHERE id=$id";
+                Yii::app()->db->createCommand($sql)->execute();
+            }
+        } elseif ( $this->is_group == 1 ) {
+            $sql = "SELECT id FROM ".$this->tableName()." WHERE album_id = " . $this->album_id ." AND group_id = " . $this->group_id ."  ORDER BY sort_group ASC";
+            $ids = Yii::app()->db->createCommand($sql)->queryColumn();
+            $i = 0;
+            foreach($ids as $id){
+                $i++;
+                $sql = "UPDATE ".$this->tableName()." SET sort_group=$i WHERE id=$id";
+                Yii::app()->db->createCommand($sql)->execute();
+            }
+        }
+        return parent::afterDelete();
     }
 
     public function afterSave()

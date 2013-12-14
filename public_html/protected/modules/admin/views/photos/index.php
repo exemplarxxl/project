@@ -110,7 +110,7 @@ $('.table').treeTable({
                     'url'=>'Yii::app()->createUrl("/admin/photos/move", array("id"=>$data->id, "moving" => "down"))',
                     'options' => array('class'=>'arrow_image_down'),
                     'visible' => '$data->sort < Photos::getMaxSort($data->album_id)',
-                    'click' => "js: function() { ajaxMoveRequest($(this).attr('href'), 'photos-grid'); return false;}",
+                    'click' => "js: function() { ajaxMoveRequest($(this).attr('href'), 'photos-grid');return false;}",
                 ),
                 'update' => array(
                     'label' => 'Редактировать',

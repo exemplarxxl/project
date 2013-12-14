@@ -18,11 +18,11 @@ $this->breadcrumbs=array(
     <?php $row = 0; ?>
     <?php foreach ( $photos as $photo ) : ?>
         <?php if ( $row == 0 ) : ?>
-            <div class="gallery-row">
+            <ul class="gallery-row">
         <?php endif; ?>
             <?php $row++ ?>
-        <div class="gallery-photo">
-
+        <li class="gallery-photo">
+            <div class="hover-photo">
             <?php
             $criteria = new CDbCriteria();
             $criteria->condition = 'group_id=:group_id AND is_published=1';
@@ -57,9 +57,10 @@ $this->breadcrumbs=array(
             }
             echo '<span class="gallery-title">' . $photo->title . ' <i>' . $count .' фото</i></span>';
             ?>
-        </div>
-        <?php if ( $row == 2 ) : ?>
             </div>
+        </li>
+        <?php if ( $row == 2 ) : ?>
+            </ul>
             <?php $row = 0 ?>
         <?php endif; ?>
     <?php endforeach; ?>

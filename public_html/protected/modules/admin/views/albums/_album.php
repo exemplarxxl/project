@@ -22,6 +22,7 @@ $('#translit-btn').click(function() {
 </div>
 
 <?php echo $form->checkBoxRow($model, 'is_published') ?>
+<?php echo $form->checkBoxRow($model, 'menu') ?>
 <?php if ( !$model->isNewRecord ) : ?>
     <div class="control-group">
         <div class="controls">

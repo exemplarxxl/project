@@ -19,6 +19,7 @@
  * @property string $meta_description
  * @property string $meta_keywords
  * @property integer $sort
+ * @property integer $menu
  */
 class Albums extends CActiveRecord
 {
@@ -43,7 +44,7 @@ class Albums extends CActiveRecord
 		// will receive user inputs.
 		return array(
             array('translit_title, title, meta_title', 'required', 'on'=>'create'),
-            array('description, meta_description, meta_keywords, parent_id, image, sort', 'safe'),
+            array('description, meta_description, meta_keywords, parent_id, image, sort, menu', 'safe'),
             array('parent_id', 'compare', 'operator' => '!=', 'compareAttribute' => 'id', 'allowEmpty' => true, 'message' => 'Узел не может быть сам себе родителем.'),
             array('translit_title', 'match', 'pattern' => '/^[\w][\w\-]*+$/', 'message' => 'Разрешённые символы: строчные буквы латинского алфавита, цифры, дефис.'),
             array('title', 'match', 'pattern' => '/^\d+$/', 'not' => true, 'message' => 'Заголовок страницы не может состоять из одного числа.'), // иначе будут проблемы при генерации хлебных крошек
@@ -85,6 +86,7 @@ class Albums extends CActiveRecord
             'meta_keywords'    => 'Ключевые слова',
 			'sort' => '№ п/п',
             'image' => 'Изображение',
+            'menu' => 'Показывать в меню'
 		);
 	}
 
@@ -229,7 +231,7 @@ class Albums extends CActiveRecord
 
     public static function getListCategorForMenu() {
         $criteria = new CDbCriteria();
-        $criteria->condition = 'level = 1 AND is_published = 1';
+        $criteria->condition = 'level = 1 AND is_published = 1 AND menu = 1';
         $criteria->order = 'sort ASC';
         $albums = Albums::model()->findAll($criteria);
 
@@ -237,7 +239,7 @@ class Albums extends CActiveRecord
         foreach ( $albums as  $album) {
 
             $criteria = new CDbCriteria();
-            $criteria->condition = 'parent_id=:parent_id AND is_published = 1';
+            $criteria->condition = 'parent_id=:parent_id AND is_published = 1 AND menu = 1';
             $criteria->params = [':parent_id'=>$album->id];
             $criteria->order = 'sort ASC';
 
@@ -293,5 +295,15 @@ class Albums extends CActiveRecord
         }
 
         return $link;
+    }
+
+    public static function getChildAlbums($id) {
+        $criteria = new CDbCriteria();
+        $criteria->condition = 'parent_id=:parent_id AND is_published=1';
+        $criteria->params = [':parent_id'=>$id];
+        $criteria->order = 'sort ASC';
+        $albums = Albums::model()->findAll($criteria);
+
+        return $albums;
     }
 }
