@@ -12,8 +12,11 @@ $this->breadcrumbs=array(
     <div class="page-header">
         <h1><img src="<?php echo Yii::app()->request->hostInfo ?>/css/gallery-gray.png" class="gallery-gray"><?php echo $album->title ?></h1>
     </div>
-
-<?php echo $album->description ?>
+    <?php if ( $album->description != null && $album->description != '' ) : ?>
+        <div class="album-description">
+            <?php echo $album->description ?>
+        </div>
+    <?php endif; ?>
 <div class="gallery">
     <?php $row = 0; ?>
     <?php foreach ( $photos as $photo ) : ?>
