@@ -352,7 +352,7 @@ class PhotosController extends AdminController
     public function actionTemp() {
         $photos = Photos::model()->findAll();
         foreach ( $photos as $photo ) {
-            if ( $photo->sort == null && $photo->parent_id == 0 ) {
+            if ( $photo->sort != null && $photo->parent_id == 0 ) {
                 $photo->is_group = 0;
             } else {
                 $photo->is_group = 1;
