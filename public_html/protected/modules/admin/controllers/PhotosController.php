@@ -349,7 +349,7 @@ class PhotosController extends AdminController
         $this->redirect(Yii::app()->request->getUrlReferrer());
     }
 
-    public function temp() {
+    public function actionTemp() {
         $photos = Photos::model()->findAll();
         foreach ( $photos as $photo ) {
             if ( $photo->sort == null && $photo->parent_id == 0 ) {
