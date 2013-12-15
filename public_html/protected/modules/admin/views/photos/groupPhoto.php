@@ -84,7 +84,7 @@ $('.table').treeTable({
 
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
-            'template' => '{up} {down}<br />{update} {delete}',
+            'template' => '{up} {down}<br />{update} {delete}<br />{makeMainPhoto}',
             'buttons' => array(
 
                 'up' => array(
@@ -106,6 +106,12 @@ $('.table').treeTable({
                     'options' => array('class'=>'arrow_image_down'),
                     'visible' => '$data->sort_group < Photos::getMaxSortGroup($data->group_id)',
                     'click' => "js: function() { ajaxMoveRequest($(this).attr('href'), 'photos-grid'); return false;}",
+                ),
+                'makeMainPhoto' => array(
+                    'label' => 'Сделать главной',
+                    'url'=>'Yii::app()->createUrl("/admin/photos/makeMainPhoto", array("photo_id"=>$data->id))',
+                    'visible' => 'Photos::isMainPhoto($data->id)',
+                    //'click' => "js: function() { ajaxMoveRequest($(this).attr('href'), 'photos-grid'); return false;}",
                 ),
                 'update' => array(
                     'label' => 'Редактировать',

@@ -313,4 +313,39 @@ class PhotosController extends AdminController
             Yii::app()->end();
         }
     }
+
+    public function actionMakeMainPhoto($photo_id) {
+
+        $mainPhoto = Photos::model()->findByPk($photo_id);
+        if ($mainPhoto->group_id != $mainPhoto->id && $mainPhoto->is_group == 1) {
+            $currentPhoto = Photos::model()->findByPk($mainPhoto->parent_id);
+
+            $sql = "SELECT id FROM ".Photos::model()->tableName()." WHERE group_id = " . $currentPhoto->id ."";
+            $groupPhotos = Yii::app()->db->createCommand($sql)->queryColumn();
+
+            $mainPhoto->sort = $currentPhoto->sort;
+            $mainPhoto->parent_id = 0;
+            $mainPhoto->group_id = $mainPhoto->id;
+            $mainPhoto->is_group = 0;
+
+            if ($mainPhoto->save()) {
+
+                $currentPhoto->sort = null;
+                $currentPhoto->parent_id = $mainPhoto->id;
+                $currentPhoto->is_group = 1;
+                if ($currentPhoto->save()) {
+                    foreach ( $groupPhotos as $groupPhoto_id ) {
+                        if ( $groupPhoto_id == $mainPhoto->id ) {
+                            continue;
+                        }
+                        $sql = "UPDATE ".Photos::model()->tableName()." SET group_id=$mainPhoto->id, parent_id=$mainPhoto->id WHERE id=$groupPhoto_id";
+                        Yii::app()->db->createCommand($sql)->execute();
+                    }
+                }
+            }
+            Yii::app()->user->setFlash('success', "Успешно изменено.");
+            $this->redirect(['/admin/photos/groupPhoto/', 'photo_id'=>$mainPhoto->id]);
+        }
+        $this->redirect(Yii::app()->request->getUrlReferrer());
+    }
 }

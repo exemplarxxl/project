@@ -454,4 +454,14 @@ class Photos extends CActiveRecord
     {
         return md5(md5(self::$salt).$str);
     }
+
+    public static function isMainPhoto($photo_id) {
+        $mainPhoto = Photos::model()->findByPk($photo_id);
+
+        if ($mainPhoto->group_id != $mainPhoto->id && $mainPhoto->is_group == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
