@@ -357,6 +357,7 @@ class PhotosController extends AdminController
             } else {
                 $photo->is_group = 1;
             }
+            $photo->save();
         }
     }
 }
