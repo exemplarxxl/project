@@ -462,16 +462,18 @@ footer {
 .footer-contact-info {
     float: left;
     width: 200px;
-
 }
 .copyright {
     padding: 20px 0 0 0;
 }
-
 .navigation {
     padding: 23px 0 0 0;
 }
 .counter {
     margin: 10px 0 0 0;
-
 }
+#share42 {padding: 6px 6px 0; border: 1px solid #666666; border-radius: 4px;}
+#share42:hover {border: 1px solid #666666; box-shadow: 0 0 5px #DDD;}
+#share42 a {opacity: 0.2}
+#share42:hover a {opacity: 0.7}
+#share42 a:hover {opacity: 1}

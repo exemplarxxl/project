@@ -120,5 +120,8 @@ return array(
         // this is used in contact page
         'adminEmail'=>'webmaster@example.com',
         'photoPath' => 'images/gallery/', // папка для фотографий
+        'christmas' => array(
+            'handler' => true,
+        ),
     ),
 );

@@ -15,16 +15,51 @@
         <?php
         Yii::app()->clientScript->registerScriptFile(Yii::app()->request->hostInfo.'/js/scrolltopcontrol.js', CClientScript::POS_END);
         ?>
+
+
+        <?php if ( Yii::app()->params['christmas']['handler'] ) :?>
+        <script src='<?php echo Yii::app()->request->baseUrl; ?>/js/snow/snowfall.jquery.js'></script>
+        <style type="text/css">
+            #garland {position:absolute;top:0;left:0;background-image:url('<?php echo Yii::app()->request->baseUrl; ?>/images/christmas-lights.png');height:36px;width:100%;overflow:hidden;z-index:99}
+            #nums_1 {padding:100px}
+            .garland_1 {background-position: 0 0}
+            .garland_2 {background-position: 0 -36px}
+            .garland_3 {background-position: 0 -72px}
+            .garland_4 {background-position: 0 -108px}
+        </style>
+
+        <div id="garland" class="garland_4"><div id="nums_1">1</div></div>
+
+        <script type="text/javascript">
+            function garland() {
+                nums = document.getElementById('nums_1').innerHTML
+                if(nums == 1) {document.getElementById('garland').className='garland_1';document.getElementById('nums_1').innerHTML='2'}
+                if(nums == 2) {document.getElementById('garland').className='garland_2';document.getElementById('nums_1').innerHTML='3'}
+                if(nums == 3) {document.getElementById('garland').className='garland_3';document.getElementById('nums_1').innerHTML='4'}
+                if(nums == 4) {document.getElementById('garland').className='garland_4';document.getElementById('nums_1').innerHTML='1'}
+            }
+
+            setInterval(function(){garland()}, 600)
+        </script>
+        <?php endif; ?>
     </head>
     <body>
-
+    <?php if ( Yii::app()->params['christmas']['handler'] ) :?>
+        <script type='text/javascript'>
+            $(document).snowfall();
+        </script>
+    <?php endif; ?>
+    <div class="share42init" data-top1="110" data-top2="110" data-margin="0" data-image="<?php echo Yii::app()->getRequest()->getHostInfo() ?>/images/logo-mini.png"></div>
+    <script type="text/javascript" src="<?php echo Yii::app()->getRequest()->getHostInfo() ?>/share42/share42.js"></script>
 
     <div id="wrapper">
 
         <header>
-            <hgroup>
+            <?php if ( Yii::app()->params['christmas']['handler'] ) :?>
+                <div id="logo"><a href="<?php echo Yii::app()->createAbsoluteUrl('/') ?>" ><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo_new_year.png" /></a></div>
+            <?php else :?>
                 <div id="logo"><a href="<?php echo Yii::app()->createAbsoluteUrl('/') ?>" ><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" /></a></div>
-            </hgroup>
+            <?php endif; ?>
             <nav>
                 <div  id="menu">
                     <!--img src="<?php echo Yii::app()->request->baseUrl; ?>/images/menu.png" /-->
