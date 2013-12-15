@@ -348,4 +348,15 @@ class PhotosController extends AdminController
         }
         $this->redirect(Yii::app()->request->getUrlReferrer());
     }
+
+    public function temp() {
+        $photos = Photos::model()->findAll();
+        foreach ( $photos as $photo ) {
+            if ( $photo->sort == null && $photo->parent_id == 0 ) {
+                $photo->is_group = 0;
+            } else {
+                $photo->is_group = 1;
+            }
+        }
+    }
 }

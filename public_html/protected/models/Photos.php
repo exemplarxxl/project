@@ -464,4 +464,6 @@ class Photos extends CActiveRecord
             return false;
         }
     }
+
+
 }
