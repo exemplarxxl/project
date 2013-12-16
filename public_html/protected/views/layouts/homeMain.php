@@ -81,7 +81,7 @@
 <div id="wrapper">
     <header>
         <?php if ( Yii::app()->params['christmas']['handler'] ) :?>
-            <div id="home_logo"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" /></div>
+            <div id="home_logo"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo_new_year.png" /></div>
         <?php else :?>
         <div id="home_logo"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" /></div>
         <?php endif; ?>
