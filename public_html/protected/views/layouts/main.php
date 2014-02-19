@@ -6,7 +6,7 @@
         <title><?php echo CHtml::encode($this->metaTitle) ?></title>
         <meta name="description" content="<?php echo CHtml::encode($this->metaDescription) ?>">
         <meta name="keywords" content="<?php echo CHtml::encode($this->metaKeywords) ?>">
-
+        ajaxStatusTasksWidget
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet"/>
         <?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
         <!-- IE6-8 support of HTML5 elements --> <!--[if lt IE 9]>
@@ -44,11 +44,7 @@
         <?php endif; ?>
     </head>
     <body>
-    <?php if ( Yii::app()->params['christmas']['handler'] ) :?>
-        <script type='text/javascript'>
-            $(document).snowfall();
-        </script>
-    <?php endif; ?>
+
     <div class="share42init" data-top1="110" data-top2="110" data-margin="0" data-image="<?php echo Yii::app()->getRequest()->getHostInfo() ?>/images/logo-mini.png"></div>
     <script type="text/javascript" src="<?php echo Yii::app()->getRequest()->getHostInfo() ?>/share42/share42.js"></script>
 
@@ -115,6 +111,33 @@
 
                     <a href="http://rangeweb.ru" title="Разработка сайта"><img src="http://rangeweb.ru/shared/logo/logo130x21.png" alt="Разработка сайта" /></a>
                     &nbsp;&nbsp;&nbsp;
+                    <!-- Yandex.Metrika counter -->
+                    <script type="text/javascript">
+                        (function (d, w, c) {
+                            (w[c] = w[c] || []).push(function() {
+                                try {
+                                    w.yaCounter24042646 = new Ya.Metrika({id:24042646,
+                                        webvisor:true,
+                                        clickmap:true,
+                                        trackLinks:true,
+                                        accurateTrackBounce:true});
+                                } catch(e) { }
+                            });
+
+                            var n = d.getElementsByTagName("script")[0],
+                                s = d.createElement("script"),
+                                f = function () { n.parentNode.insertBefore(s, n); };
+                            s.type = "text/javascript";
+                            s.async = true;
+                            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+                            if (w.opera == "[object Opera]") {
+                                d.addEventListener("DOMContentLoaded", f, false);
+                            } else { f(); }
+                        })(document, window, "yandex_metrika_callbacks");
+                    </script>
+                    <noscript><div><img src="//mc.yandex.ru/watch/24042646" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+                    <!-- /Yandex.Metrika counter -->
                     <!--LiveInternet counter--><script type="text/javascript"><!--
                         document.write("<a href='http://www.liveinternet.ru/click' "+
                             "target=_blank><img src='//counter.yadro.ru/hit?t50.4;r"+
@@ -132,9 +155,11 @@
 
         </footer>
         </div>
-    <script>
-
-    </script>
+    <?php if ( Yii::app()->params['christmas']['handler'] ) :?>
+        <script type='text/javascript'>
+            $(document).snowfall();
+        </script>
+    <?php endif; ?>
     </body>
 </html>
 
