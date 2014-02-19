@@ -6,7 +6,6 @@
         <title><?php echo CHtml::encode($this->metaTitle) ?></title>
         <meta name="description" content="<?php echo CHtml::encode($this->metaDescription) ?>">
         <meta name="keywords" content="<?php echo CHtml::encode($this->metaKeywords) ?>">
-        ajaxStatusTasksWidget
         <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet"/>
         <?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
         <!-- IE6-8 support of HTML5 elements --> <!--[if lt IE 9]>
