@@ -137,6 +137,7 @@
                     </script>
                     <noscript><div><img src="//mc.yandex.ru/watch/24042646" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
                     <!-- /Yandex.Metrika counter -->
+
                     <!--LiveInternet counter--><script type="text/javascript"><!--
                         document.write("<a href='http://www.liveinternet.ru/click' "+
                             "target=_blank><img src='//counter.yadro.ru/hit?t50.4;r"+
@@ -145,7 +146,7 @@
                                 screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                             ";"+Math.random()+
                             "' alt='' title='LiveInternet' "+
-                            "border='0' width='31' height='31'><\/a>")
+                            "border='0' width='0' height='0'><\/a>")
                         //--></script><!--/LiveInternet-->
 
                 </div>
